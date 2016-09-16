@@ -2,9 +2,24 @@ module.exports = function(grunt) {
 
     var config = {
         pkg: grunt.file.readJSON('package.json'),
-        banner_title: '/* App Name: <%= pkg.name %> */\n' +
-        '/* Created:  <%= grunt.template.today("yyyy-mm-dd HH:MM") %> */\n' +
-        '/* Author: <%= pkg.author %> */\n'
+        banner_title: '/* App Name: life-helper\n '+
+        'Author: Mariia Paniutina <mpaniutina@linkedin.com, mariia.paniutina@gmail.com> */\n'
+    };
+
+    //banner to all lib files
+    grunt.loadNpmTasks('grunt-banner');
+    config.usebanner = {
+        taskName: {
+            options: {
+                position: 'top',
+                banner: config.banner_title,
+                linebreak: true,
+                replace: true
+            },
+            files: {
+                src: [ 'lib/*.js']
+            }
+        }
     };
 
     //js validation
@@ -27,8 +42,10 @@ module.exports = function(grunt) {
                 separator: '\n\n'
             },
             files: {
-                'lib/lib.js': [
-                    'src/*.js'
+                'lib/logHelper.js': [
+                    'src/libWrappers/libLogTop.txt',
+                    'src/logHelper.js',
+                    'src/libWrappers/libLogBottom.txt'
                 ]
             }
         }
@@ -139,7 +156,7 @@ module.exports = function(grunt) {
 
     // Tasks
 
-    grunt.registerTask('default', ['jshint', 'connect', 'watch']);
+    grunt.registerTask('default', ['jshint', 'concat', 'usebanner', 'connect', 'watch']);
     grunt.registerTask('notes', ['bump-only', 'conventionalChangelog', 'bump-commit']);
 
     grunt.registerTask('develop', ['default', 'bump:patch']);

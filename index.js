@@ -1,0 +1,116 @@
+//Example of ES5 way usage
+
+//DOM elements
+var userNameLbl = document.getElementById('userNameLbl');
+var userLastNameLbl = document.getElementById('userLastNameLbl');
+var updateBttn = document.getElementById('updateUserProfile');
+var userNameInput = document.getElementById('userNameInput');
+var userLastNameInput = document.getElementById('userLastNameInput');
+
+//setting up helper
+window.MyGlobalVar = window.MyGlobalVar || {};
+window.MyGlobalVar.mylog = new LIFE.Helpers.LogHelper({siteID: 'testem'});
+
+//just to check arguments for logHelper
+MyGlobalVar.mylog.log(MyGlobalVar.mylog.getOptions());
+
+
+//Some simple Class example
+var User = function(options){
+    MyGlobalVar.mylog.log('User.contstructor :: Enter', options);
+
+    this._profile = {
+        name: options.name,
+        lastName: options.lastName
+    };
+};
+
+User.prototype.getName = function(){
+    MyGlobalVar.mylog.log('User.getName :: Enter');
+
+    return this._profile.name;
+};
+
+User.prototype.getLastName = function(){
+    MyGlobalVar.mylog.log('User.getLastName :: Enter');
+
+    return this._profile.lastName;
+};
+
+User.prototype.updateProfileName = function (name) {
+    MyGlobalVar.mylog.log('User.updateProfileName :: Enter', name);
+
+    this._profile.name = name;
+};
+
+User.prototype.updateProfileLastName = function (lastName) {
+    MyGlobalVar.mylog.log('User.updateProfileLastName :: Enter', lastName);
+
+    this._profile.lastName = lastName;
+};
+
+User.prototype.updateProfile = function (options) {
+    MyGlobalVar.mylog.log('User.updateProfile :: Enter', options);
+
+    this.updateProfileName(options.name);
+    this.updateProfileLastName(options.lastName);
+};
+
+User.prototype.displayProfileName = function () {
+    MyGlobalVar.mylog.log('User.displayProfileName :: Enter');
+
+    userNameLbl.innerHTML = this.getName();
+    userNameInput.value = '';
+};
+
+User.prototype.displayProfileLastName = function () {
+    MyGlobalVar.mylog.log('User.displayProfileLastName :: Enter');
+
+    userLastNameLbl.innerHTML = this.getLastName();
+    userLastNameInput.value = '';
+};
+
+User.prototype.displayProfile = function(){
+    MyGlobalVar.mylog.log('User.displayProfile :: Enter');
+
+    this.displayProfileName();
+    this.displayProfileLastName();
+};
+
+
+//Usage
+var john = new User({
+    name: 'John',
+    lastName: 'Doe'
+});
+john.displayProfile();
+
+updateBttn.addEventListener('click', function(){
+    MyGlobalVar.mylog.log('USER_EVENT :: updateBttn.click :: Enter');
+
+    var name = userNameInput.value;
+    var lastName = userLastNameInput.value;
+
+    if (name.length > 0 && lastName.length > 0){
+
+        john.updateProfile({
+            name: name,
+            lastName: lastName
+        });
+
+    } else if (name.length > 0){
+
+        john.updateProfileName(name);
+
+    } else if (lastName.length > 0){
+
+        john.updateProfileLastName(lastName);
+
+    } else {
+
+        MyGlobalVar.mylog.log('updateBttn.click :: No data provided');
+
+    }
+
+    john.displayProfile();
+}, false);

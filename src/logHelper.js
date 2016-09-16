@@ -1,21 +1,3 @@
-(function (root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        // AMD
-        define([], factory);
-    } else if (typeof module === 'object' && module.exports) {
-        // CommonJS
-        module.exports = new factory();
-    } else {
-        // Browser global
-        root.LIFE = root.LIFE || {};
-        root.LIFE.Helpers = root.LIFE.Helpers || {};
-        root.LIFE.Helpers.LogHelper = root.LIFE.Helpers.LogHelper || new factory();
-
-        //setting up PIWIK
-        root._paq = root._paq || [];
-    }
-}(this, function (prop) {
-
     var LogHelper = function(prop){
         this.options = prop;
         this.modeOptions = {
@@ -37,7 +19,7 @@
     LogHelper.prototype.devMode = function devMode(mode){
         var query = window.location.search;
 
-        return query.search(this.modeOptions[mode]) !== -1;
+        return query.indexOf(this.modeOptions[mode]) !== -1;
     };
 
     LogHelper.prototype.getSessionID = function getSessionID(name){
@@ -50,7 +32,7 @@
     };
 
     LogHelper.prototype.getMessageDebugMode = function(msg, args){
-        var message = ':: MSG :: [' +
+        var message = 'MSG :: [' +
             msg +
             '] ' +
             args;
@@ -78,24 +60,21 @@
         var message;
 
         //display input field, only if it is not empty
-        var input = JSON.stringify(inputArgs).length > 2 ?  'INPUT :: >> ' + JSON.stringify(inputArgs) : '';
+        var input = JSON.stringify(inputArgs).length > 2 ?  '| INPUT :: >> ' + JSON.stringify(inputArgs) : '';
 
         //output message to browser log tool
-        if (this.devMode(devDebug)){
-            console.log('simple debug');
-            message = this.getMessageDebugMode(args[0], input);
-            console.log(message);
-        }
-
-        if (this.devMode(fullDevDebug)){
-            console.log('full debug');
+        if (this.devMode('fullDevDebug')){
             message = this.getMessageFullDebugMode(dateFormated, sessionID, args[0], input);
             console.log(message);
         }
 
+        if (this.devMode('devDebug')){
+            message = this.getMessageDebugMode(args[0], input);
+            console.log(message);
+        }
+
+
+
         //push message to PIWIK
         //this.messagePush();
     };
-
-    return LogHelper;
-}));

@@ -1,0 +1,60 @@
+<html>
+<head>
+    <title>LinkedIn Front-End Helpers (LIFE Helpers)</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+
+    <!-- Latest jquery -->
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container wrapper">
+    <div class="wrapper-row">
+
+        <h2>LinkedIn Front-End Helpers (LIFE Helpers)</h2>
+
+        <p>Here is an example of JS logging, which contains two modes:</p>
+        <ul>
+            <li>DEBUG => in URL please enter next <b>?LIFE_MODE=DEBUG</b></li>
+            <li>FULL DEBUG => in URL please enter next <b>?LIFE_MODE=FULL_DEBUG</b></li>
+            <li>PRODUCTION => no changes in URL</li>
+        </ul>
+
+        <hr />
+
+        <h2>Update Profile</h2>
+
+        <h3>User name: <span class="label label-success" id="userNameLbl"></span></h3>
+        <h3>User last name: <span class="label label-success" id="userLastNameLbl"></span></h3>
+    </div>
+    <br />
+    <div class="wrapper-row">
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">User Name</span>
+            <input id="userNameInput" type="text" class="form-control" placeholder="Enter new user name" aria-describedby="basic-addon1">
+        </div>
+    </div>
+    <br />
+    <div class="wrapper-row">
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon2">User Last Name</span>
+            <input id="userLastNameInput" type="text" class="form-control" placeholder="Enter new last user name" aria-describedby="basic-addon2">
+        </div>
+    </div>
+    <br />
+    <div class="wrapper-row">
+        <button class="btn btn-primary" id="updateUserProfile">Update User profile</button>
+    </div>
+</div>
+
+<script src="node_modules/requirejs/require.js" data-main="index_require"></script>
+</body>
+</html>

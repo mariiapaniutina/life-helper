@@ -1,2 +1,2 @@
 # life-helper
-LinkedIn Front-End helpers utilities
+Utility Helpers

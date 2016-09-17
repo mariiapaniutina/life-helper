@@ -3,7 +3,7 @@ module.exports = function(grunt) {
     var config = {
         pkg: grunt.file.readJSON('package.json'),
         banner_title: '/* App Name: life-helper\n '+
-        'Author: Mariia Paniutina <mpaniutina@linkedin.com, mariia.paniutina@gmail.com> */\n'
+        'Author: Mariia Paniutina <mariia.paniutina@gmail.com> */\n'
     };
 
     //banner to all lib files

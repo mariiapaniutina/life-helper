@@ -2,12 +2,12 @@
 Utility Helpers
 
 
-### Require example
+### AMD example (using `require.js`)
 ```
 index_require.html
 ```
 
-### jQuery way example
+### jQuery way example (using global `LIFE` variable)
 ```
 index.html
 ```

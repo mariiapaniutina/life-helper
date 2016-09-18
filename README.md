@@ -12,4 +12,4 @@ index_require.html
 index.html
 ```
 
-Run all examples with query `?LIFE_MODE=DEBUG` or `LIFE_MODE=FULL_DEBUG`
+Run all examples with query `?LIFE_MODE=DEBUG` or `?LIFE_MODE=FULL_DEBUG`

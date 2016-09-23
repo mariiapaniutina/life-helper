@@ -7,12 +7,12 @@ Next major version will have option to load logs to PIWIK or SPLUNK server.
 
 ###How to run
 To see, how it works:<br />
-1. Install via npm `npm install --save-dev life-helper` or just download from GitHub<br />
-2. Install all required dependencies via `npm install`<br />
-3. Run simple nodejs webserver via `node server.js`<br />
-4. Open an example:<br /> 
-  a: For `require.js` -> `http:localhost:8091/index_require.html?LIFE_MODE=DEBUG` or `http:localhost:8091/index_require.html?LIFE_MODE=FULL_DEBUG`<br />
-  b: Like reqular library -> `http:localhost:8091/index.html?LIFE_MODE=DEBUG` or `http:localhost:8091/index.html?LIFE_MODE=FULL_DEBUG`<br />
+ * Install via npm `npm install --save-dev life-helper` or just download from GitHub<br />
+ * Install all required dependencies via `npm install`<br />
+ * Run simple nodejs webserver via `node server.js`<br />
+ * Open an example:<br />
+   * For `require.js` -> `http:localhost:8091/index_require.html?LIFE_MODE=DEBUG` or `http:localhost:8091/index_require.html?LIFE_MODE=FULL_DEBUG`<br />
+   * Like reqular library -> `http:localhost:8091/index.html?LIFE_MODE=DEBUG` or `http:localhost:8091/index.html?LIFE_MODE=FULL_DEBUG`<br />
 
 ### AMD example (using `require.js`)
 ```

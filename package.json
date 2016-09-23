@@ -1,7 +1,7 @@
 {
   "name": "life-helper",
-  "version": "0.0.3",
-  "description": "This is module, which contains logHelper for js applications. To see, how it works - run `npm start` in cli, and open `http:localhost:8091/index_require.html?LIFE_MODE=DEBUG`",
+  "version": "0.0.4",
+  "description": "logHelper for js applications",
   "main": "index.js",
   "scripts": {
     "start": "node server.js"

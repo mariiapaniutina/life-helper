@@ -1,9 +1,12 @@
 # life-helper
-This is module, which contains logHelper for js applications.
+[![npm version](https://badge.fury.io/js/life-helper.svg)](https://badge.fury.io/js/life-helper)
+
+###What is this
+* This is module, which contains logHelper for js applications.
 
 ###What the idea
 Idea to having proper logging for JS applications. And have possibilities to turn it on/off.<br />
-Next major version will have option to load logs to PIWIK or SPLUNK server.
+Next major version will have option to load logs to `PIWIK` or `SPLUNK` server.
 
 ###How to run
  * Install via npm `npm install --save-dev life-helper` or just download from GitHub<br />

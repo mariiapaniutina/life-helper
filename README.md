@@ -6,7 +6,6 @@ Idea to having proper logging for JS applications. And have possibilities to tur
 Next major version will have option to load logs to PIWIK or SPLUNK server.
 
 ###How to run
-To see, how it works:<br />
  * Install via npm `npm install --save-dev life-helper` or just download from GitHub<br />
  * Install all required dependencies via `npm install`<br />
  * Run simple nodejs webserver via `node server.js`<br />

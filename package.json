@@ -1,10 +1,10 @@
 {
   "name": "life-helper",
-  "version": "0.0.2",
-  "description": "LIFE-helper - Front-End helper",
+  "version": "0.0.3",
+  "description": "This is module, which contains logHelper for js applications. To see, how it works - run `npm start` in cli, and open `http:localhost:8091/index_require.html?LIFE_MODE=DEBUG`",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   "license": "MIT",
   "devDependencies": {
     "babel-preset-es2015": "^6.14.0",
+    "connect": "^3.5.0",
     "grunt": "^1.0.1",
     "grunt-babel": "^6.0.0",
     "grunt-banner": "^0.6.0",

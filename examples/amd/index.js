@@ -1,16 +1,7 @@
 define(function (require) {
     'use strict';
 
-    var LogHelper = require('../../lib/logHelper_old');
-/*
-    var logTemplate = require('src/module_template');
-    console.log('logTemplate', logTemplate);
-    var tmpl = new logTemplate('123123');
-    console.log(tmpl.myProp());
-   */
-    var logTester = require('../../lib/LogHelper');
-    //var LOG_TESTER = new logTester('name', 'test');
-    //LOG_TESTER.log('START');
+    var LogHelper = require('../../lib/LogHelper');
 
     //DOM elements
     var userNameLbl = document.getElementById('userNameLbl');
@@ -20,7 +11,7 @@ define(function (require) {
     var userLastNameInput = document.getElementById('userLastNameInput');
 
     //setting up helper
-    var logHelper = new logTester({siteID: 'MyCustomSideID'});
+    var logHelper = new LogHelper({siteID: 'MyCustomSideID'});
 
     //just to check arguments for logHelper
     logHelper.log(logHelper.getOptions());

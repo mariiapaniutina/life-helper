@@ -9,15 +9,12 @@ Idea to having proper logging for JS applications. And have possibilities to tur
 Next major version will have option to load logs to `PIWIK` or `SPLUNK` server.
 
 ###How to run
- * Install via npm `npm install --save-dev life-helper` or just download from GitHub<br />
- * Install all required dependencies via `npm install`<br />
- * Run simple nodejs webserver via `node server.js`<br />
+ * Install via npm **`npm install --save-dev life-helper`** or just download from GitHub<br />
+ * Install all required dependencies via **`npm install`**<br />
+ * Run simple nodejs webserver via **`node server.js`**<br />
  * Open an examples:<br />
-   * AMD => `http://localhost:8091/examples/amd/index.html?LIFE_MODE=DEBUG`<br />
-   * IIFE => `http://localhost:8091/examples/iife/index.html?LIFE_MODE=DEBUG`<br />
-   * CommonJS => in CLI, under `/examples/commonJS` run command `node index.js` <br />
+   * AMD => **`http://localhost:8091/examples/amd/index.html?LIFE_MODE=DEBUG`**<br /> 
+   * IIFE => **`http://localhost:8091/examples/iife/index.html?LIFE_MODE=DEBUG`**<br />
+   * CommonJS => in CLI, under **`/examples/commonJS`** run command **`node index.js`** <br />
 
 Run all examples with query `?LIFE_MODE=DEBUG` or `?LIFE_MODE=FULL_DEBUG`
-
-P.S
-Tested only in Chrome and FF.

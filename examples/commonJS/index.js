@@ -58,3 +58,27 @@ developer.updateProfile({
     name: 'Engineer',
     lastName: 'JavaScript'
 });
+
+logMessaging.trace('Test for trace message');
+logMessaging.info('Test for info message');
+logMessaging.warn('Test for warning message');
+logMessaging.error('Test for error message');
+logMessaging.crit('Test for critical message');
+
+// test with objects
+logMessaging.crit(logMessaging);
+logMessaging.crit({'protp1':2,'prop2':'bebebe'});
+
+// test for Tag X
+logMessaging.traceTag('XTAG1', 'Test for trace message');
+logMessaging.infoTag('XTAG1', 'Test for info message');
+logMessaging.warnTag('XTAG1', 'Test for warning message');
+logMessaging.errorTag('XTAG1', 'Test for error message');
+logMessaging.critTag('XTAG1', 'Test for critical message');
+
+// test for USRIN
+logMessaging.traceTag('USRIN', 'Test for trace message');
+logMessaging.infoTag('USRIN', 'Test for info message');
+logMessaging.warnTag('USRIN', 'Test for warning message');
+logMessaging.errorTag('USRIN', 'Test for error message');
+logMessaging.critTag('USRIN', 'Test for critical message');

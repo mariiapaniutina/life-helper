@@ -11,7 +11,10 @@ define(function (require) {
     var userLastNameInput = document.getElementById('userLastNameInput');
 
     //setting up helper
-    var logHelper = new LogHelper({siteID: 'MyCustomSideID'});
+    var logHelper = new LogHelper({
+        siteID: 'AMD_EXAMPLE',
+        sessionID: 'ABCD-2343'
+    });
 
     //just to check arguments for logHelper
     logHelper.log(logHelper.getOptions());
@@ -115,4 +118,31 @@ define(function (require) {
 
         john.displayProfile();
     }, false);
+
+
+    console.log('--- EXAMPLE OF LOGGING BY TYPE ---');
+    //Example of log by type
+    logHelper.trace('Test for trace message');
+    logHelper.info('Test for info message');
+    logHelper.warn('Test for warning message');
+    logHelper.error('Test for error message');
+    logHelper.crit('Test for critical message');
+
+    // test with objects
+    logHelper.crit(logHelper);
+    logHelper.crit({'protp1':2,'prop2':'bebebe'});
+
+    // test for Tag X
+    logHelper.traceTag('XTAG1', 'Test for trace message');
+    logHelper.infoTag('XTAG1', 'Test for info message');
+    logHelper.warnTag('XTAG1', 'Test for warning message');
+    logHelper.errorTag('XTAG1', 'Test for error message');
+    logHelper.critTag('XTAG1', 'Test for critical message');
+
+    // test for USRIN
+    logHelper.traceTag('USRIN', 'Test for trace message');
+    logHelper.infoTag('USRIN', 'Test for info message');
+    logHelper.warnTag('USRIN', 'Test for warning message');
+    logHelper.errorTag('USRIN', 'Test for error message');
+    logHelper.critTag('USRIN', 'Test for critical message');
 });

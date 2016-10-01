@@ -1,6 +1,6 @@
 {
   "name": "life-helper",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "logHelper for js applications",
   "main": "index.js",
   "scripts": {
@@ -32,6 +32,7 @@
     "grunt-jsbeautifier": "^0.2.13",
     "load-grunt-tasks": "^3.5.2",
     "require": "^2.4.20",
-    "requirejs": "^2.3.1"
+    "requirejs": "^2.3.1",
+    "serve-static": "^1.11.1"
   }
 }

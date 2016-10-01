@@ -6,7 +6,10 @@ var userNameInput = document.getElementById('userNameInput');
 var userLastNameInput = document.getElementById('userLastNameInput');
 
 //setting up helper
-window.logMessaging = new logHelper()({siteID: 'testem'});
+window.logMessaging = new logHelper()({
+    siteID: 'IIFE_EXAMPLE',
+    sessionID: 'BGHD-4567'
+});
 
 //just to check arguments for logHelper
 logMessaging.log(logMessaging.getOptions());
@@ -82,30 +85,6 @@ var john = new User({
 });
 john.displayProfile();
 
-logMessaging.trace('Test for trace message');
-logMessaging.info('Test for info message');
-logMessaging.warn('Test for warning message');
-logMessaging.error('Test for error message');
-logMessaging.crit('Test for critical message');
-
-// test with objects
-logMessaging.crit(logMessaging);
-logMessaging.crit({'protp1':2,'prop2':'bebebe'});
-
-// test for Tag X
-logMessaging.traceTag('XTAG1', 'Test for trace message');
-logMessaging.infoTag('XTAG1', 'Test for info message');
-logMessaging.warnTag('XTAG1', 'Test for warning message');
-logMessaging.errorTag('XTAG1', 'Test for error message');
-logMessaging.critTag('XTAG1', 'Test for critical message');
-
-// test for USRIN
-logMessaging.traceTag('USRIN', 'Test for trace message');
-logMessaging.infoTag('USRIN', 'Test for info message');
-logMessaging.warnTag('USRIN', 'Test for warning message');
-logMessaging.errorTag('USRIN', 'Test for error message');
-logMessaging.critTag('USRIN', 'Test for critical message');
-
 updateBttn.addEventListener('click', function(){
     logMessaging.log('USER_EVENT :: updateBttn.click :: Enter');
 
@@ -135,3 +114,29 @@ updateBttn.addEventListener('click', function(){
 
     john.displayProfile();
 }, false);
+
+console.log('--- EXAMPLE OF LOGGING BY TYPE ---');
+//Example of log by type
+logMessaging.trace('Test for trace message');
+logMessaging.info('Test for info message');
+logMessaging.warn('Test for warning message');
+logMessaging.error('Test for error message');
+logMessaging.crit('Test for critical message');
+
+// test with objects
+logMessaging.crit(logMessaging);
+logMessaging.crit({'protp1':2,'prop2':'bebebe'});
+
+// test for Tag X
+logMessaging.traceTag('XTAG1', 'Test for trace message');
+logMessaging.infoTag('XTAG1', 'Test for info message');
+logMessaging.warnTag('XTAG1', 'Test for warning message');
+logMessaging.errorTag('XTAG1', 'Test for error message');
+logMessaging.critTag('XTAG1', 'Test for critical message');
+
+// test for USRIN
+logMessaging.traceTag('USRIN', 'Test for trace message');
+logMessaging.infoTag('USRIN', 'Test for info message');
+logMessaging.warnTag('USRIN', 'Test for warning message');
+logMessaging.errorTag('USRIN', 'Test for error message');
+logMessaging.critTag('USRIN', 'Test for critical message');

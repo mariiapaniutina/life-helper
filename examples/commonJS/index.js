@@ -1,6 +1,7 @@
 var LogHelper = require('../../lib/LogHelper')();
 var logMessaging = new LogHelper({
-    commonJS: true
+    commonJS: true,
+    siteID: 'COMMONJS_EXAMPLE'
 });
 
 /*======================================================================================================================
@@ -59,6 +60,8 @@ developer.updateProfile({
     lastName: 'JavaScript'
 });
 
+console.log('--- EXAMPLE OF LOGGING BY TYPE ---');
+//Example of log by type
 logMessaging.trace('Test for trace message');
 logMessaging.info('Test for info message');
 logMessaging.warn('Test for warning message');

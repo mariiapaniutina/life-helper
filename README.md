@@ -25,6 +25,9 @@ Next major version will have option to load logs to `PIWIK` or `SPLUNK` server.
    * `LogHelper.errorTag('XTAG1', 'Test for error message');`
    * `LogHelper.critTag('XTAG1', 'Test for critical message');`
 
+ * Getting cached logs
+   * `LogHelper.getCache()`
+
 ### How to run
  * Install via npm **`npm install --save-dev life-helper`** or just download from GitHub<br />
  * Install all required dependencies via **`npm install`**<br />

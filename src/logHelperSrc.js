@@ -10,6 +10,9 @@ var logHelper = function(prop) {
         // use ERR as a default level
         this.logLevel = 4;
 
+        this.cacheSize = this.options.cacheSize || 100;
+        this.cacheStorage = [];
+
         //session ID
         this.sessionID =  this.options.sessionID || '';
 
@@ -24,12 +27,6 @@ var logHelper = function(prop) {
         var dateFormated = date.getTime();
 
         return dateFormated;
-    };
-
-    LogUtility.prototype.messagePush = function messagePush(evt, message){
-        var eventName = evt || 'JS Event';
-
-        _paq.push(['trackEvent', eventName, message]);
     };
 
     LogUtility.prototype.devMode = function devMode(mode){
@@ -123,7 +120,7 @@ var logHelper = function(prop) {
     LogUtility.prototype.DOM_Log = function DOM_Log(){
         var args = Array.prototype.slice.call(arguments); //[{ {'0': MSG}, {'1': INPUT} }]
         var inputArgs = args[0][1] ? args[0][1] : [];
-        var message;
+        var message = this.getMessageDebugMode(args[0][0], inputArgs); //default message will be taken from simple debug mode
 
         //output message to browser log tool
         if (this.devMode('fullDevDebug')){
@@ -135,6 +132,20 @@ var logHelper = function(prop) {
             message = this.getMessageDebugMode(args[0][0], inputArgs);
             console.log(message);
         }
+
+        //update cache with every log message
+        this.cacheUpdate(message);
+    };
+
+    LogUtility.prototype.cacheUpdate = function(msg){
+        if (this.cacheStorage.length === this.cacheSize){
+            this.cacheStorage.shift();
+        }
+        this.cacheStorage.push(msg);
+    };
+
+    LogUtility.prototype.getCache = function () {
+        return this.cacheStorage;
     };
 
     LogUtility.prototype.log = function() {
@@ -163,7 +174,7 @@ var logHelper = function(prop) {
 
         // process the input args
         var logLevel = 4;
-        var logMsg;
+        var logMsg = this.getLevelTagMessageDebugMode(levelNames[msgLevel], msgTag, message);
 
         // TODO: if we have more arguments or message is an object - stringify it
         if (typeof message == 'object') {
@@ -171,25 +182,27 @@ var logHelper = function(prop) {
         }
 
         // log only if current log level is higher than message level
-        if (msgLevel <= this.logLevel) {
-
-            if (this.options && this.options.commonJS) {
+        if (msgLevel <= this.logLevel){
+            if (this.options && this.options.commonJS){
                 //message for commonJS
                 logMsg = this.getLevelTagMessageDebugMode(levelNames[msgLevel], msgTag, message);
-            } else {
-                //message for browser
+                console.log(logMsg);
+            } else if (this.devMode('fullDevDebug') || this.devMode('devDebug')){
+                //message for rest DOM
                 if (this.devMode('fullDevDebug')){
                     logMsg = this.getLevelTagMessageFullDebugMode(levelNames[msgLevel], msgTag, message);
+                    console.log(logMsg);
                 }
 
                 if (this.devMode('devDebug')){
                     logMsg = this.getLevelTagMessageDebugMode(levelNames[msgLevel], msgTag, message);
+                    console.log(logMsg);
                 }
-
             }
-
-            console.log(logMsg);
         }
+
+        //update cache with every log message
+        this.cacheUpdate(logMsg);
     };
 
 

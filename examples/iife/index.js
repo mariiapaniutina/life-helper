@@ -1,12 +1,20 @@
-//DOM elements
+/**
+ * All DOM elements are defined here....
+ */
 var userNameLbl = document.getElementById('userNameLbl');
 var userLastNameLbl = document.getElementById('userLastNameLbl');
-var updateBttn = document.getElementById('updateUserProfile');
+var updateUserProfile = document.getElementById('updateUserProfile');
 var userNameInput = document.getElementById('userNameInput');
 var userLastNameInput = document.getElementById('userLastNameInput');
+var showLevelLogs = document.getElementById('exampleLevelLogs');
+var showCachedLogs = document.getElementById('showCachedLogs');
 
-//setting up helper
-window.logMessaging = new logHelper()({
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Setting up the LifeHelper
+ */
+
+window.logMessaging = logHelper()({
     siteID: 'IIFE_EXAMPLE',
     sessionID: 'BGHD-4567'
 });
@@ -14,8 +22,13 @@ window.logMessaging = new logHelper()({
 //just to check arguments for logHelper
 logMessaging.log(logMessaging.getOptions());
 
+//----------------------------------------------------------------------------------------------------------------------
 
-//Some simple Class example
+/**
+ * Some real-world example
+ * @param options
+ * @constructor
+ */
 var User = function(options){
     logMessaging.log('User.contstructor :: Enter', options);
 
@@ -85,8 +98,59 @@ var john = new User({
 });
 john.displayProfile();
 
-updateBttn.addEventListener('click', function(){
-    logMessaging.log('USER_EVENT :: updateBttn.click :: Enter');
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Handler for logs by level or tag
+ */
+var showLogLevelsHandler = function(){
+    logMessaging.log('showLogLevelshandler :: Enter');
+
+    //Example of log by type
+    logMessaging.trace('Test for trace message');
+    logMessaging.info('Test for info message');
+    logMessaging.warn('Test for warning message');
+    logMessaging.error('Test for error message');
+    logMessaging.crit('Test for critical message');
+
+    // test with objects
+    logMessaging.crit(logMessaging);
+    logMessaging.crit({'protp1':2,'prop2':'bebebe'});
+
+    // test for Tag X
+    logMessaging.traceTag('XTAG1', 'Test for trace message');
+    logMessaging.infoTag('XTAG1', 'Test for info message');
+    logMessaging.warnTag('XTAG1', 'Test for warning message');
+    logMessaging.errorTag('XTAG1', 'Test for error message');
+    logMessaging.critTag('XTAG1', 'Test for critical message');
+
+    // test for USRIN
+    logMessaging.traceTag('USRIN', 'Test for trace message');
+    logMessaging.infoTag('USRIN', 'Test for info message');
+    logMessaging.warnTag('USRIN', 'Test for warning message');
+    logMessaging.errorTag('USRIN', 'Test for error message');
+    logMessaging.critTag('USRIN', 'Test for critical message');
+};
+
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Handler for showing cached logs
+ */
+var showCachedLogsHandler = function(){
+    logMessaging.log('showCachedLogsHandler :: Enter');
+
+    var logs = logMessaging.getCache();
+    console.log(logs);
+};
+
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Handler for updating user profile data in DOM
+ */
+var updateUserProfileHandler = function(){
+    logMessaging.log('updateUserProfileHandler :: Enter');
 
     var name = userNameInput.value;
     var lastName = userLastNameInput.value;
@@ -108,35 +172,34 @@ updateBttn.addEventListener('click', function(){
 
     } else {
 
-        logMessaging.log('updateBttn.click :: No data provided');
+        logMessaging.log('updateUserProfileHandler :: No data provided');
 
     }
 
     john.displayProfile();
+};
+
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Event listeners here
+ */
+updateUserProfile.addEventListener('click', function(){
+    logMessaging.log('USER_EVENT :: updateUserProfile.click :: Enter');
+
+    updateUserProfileHandler();
 }, false);
 
-console.log('--- EXAMPLE OF LOGGING BY TYPE ---');
-//Example of log by type
-logMessaging.trace('Test for trace message');
-logMessaging.info('Test for info message');
-logMessaging.warn('Test for warning message');
-logMessaging.error('Test for error message');
-logMessaging.crit('Test for critical message');
+showLevelLogs.addEventListener('click', function(){
+    logMessaging.log('USER_EVENT :: showLevelLogs.click :: Enter');
 
-// test with objects
-logMessaging.crit(logMessaging);
-logMessaging.crit({'protp1':2,'prop2':'bebebe'});
+    showLogLevelsHandler();
+}, false);
 
-// test for Tag X
-logMessaging.traceTag('XTAG1', 'Test for trace message');
-logMessaging.infoTag('XTAG1', 'Test for info message');
-logMessaging.warnTag('XTAG1', 'Test for warning message');
-logMessaging.errorTag('XTAG1', 'Test for error message');
-logMessaging.critTag('XTAG1', 'Test for critical message');
+showCachedLogs.addEventListener('click', function(){
+    logMessaging.log('USER_EVENT :: showCachedLogs.click :: Enter');
 
-// test for USRIN
-logMessaging.traceTag('USRIN', 'Test for trace message');
-logMessaging.infoTag('USRIN', 'Test for info message');
-logMessaging.warnTag('USRIN', 'Test for warning message');
-logMessaging.errorTag('USRIN', 'Test for error message');
-logMessaging.critTag('USRIN', 'Test for critical message');
+    showCachedLogsHandler();
+}, false);
+
+//----------------------------------------------------------------------------------------------------------------------

@@ -2,14 +2,24 @@ module.exports = function(grunt) {
 
     var config = {
         pkg: grunt.file.readJSON('package.json'),
-        banner_title: '/* App Name: life-helper\n '+
-        'Author: Mariia Paniutina <mariia.paniutina@gmail.com> */\n'
+        banner_title: '/* -------------------------------------------------\n' +
+        'App Name: life-helper\n' +
+        'Author: Mariia Paniutina <mariia.paniutina@gmail.com>\n' +
+        'Date: <%= grunt.template.today("dd-mm-yyyy") %>\n' +
+        'Description: logging tool for JS applications'+
+        '----------------------------------------------------\n' +
+        'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT\n' +
+        'LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN\n' +
+        'NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\n' +
+        'WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE\n' +
+        'OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n' +
+        '------------------------------------------------- */\n'
     };
 
     //banner to all lib files
     grunt.loadNpmTasks('grunt-banner');
     config.usebanner = {
-        taskName: {
+        licence: {
             options: {
                 position: 'top',
                 banner: config.banner_title,
@@ -120,7 +130,7 @@ module.exports = function(grunt) {
     grunt.registerTask('develop', ['default', 'bump:patch']);
     grunt.registerTask('release', ['default', 'bump:minor']);
 
-    grunt.registerTask('developLog', ['copy:logHelper', 'jsbeautifier']);
+    grunt.registerTask('developLog', ['copy:logHelper', 'jsbeautifier', 'usebanner:licence']);
 
     grunt.initConfig(config);
 

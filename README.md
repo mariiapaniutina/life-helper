@@ -24,7 +24,6 @@ Next major version will have option to load logs to `PIWIK` or `SPLUNK` server.
    * `LogHelper.warnTag('XTAG1', 'Test for warning message');`
    * `LogHelper.errorTag('XTAG1', 'Test for error message');`
    * `LogHelper.critTag('XTAG1', 'Test for critical message');`
-
  * Getting cached logs
    * `LogHelper.getCache()`
 

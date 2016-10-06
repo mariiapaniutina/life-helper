@@ -5,10 +5,19 @@
 * This is module, which contains logHelper for js applications.
 
 ### What the idea
-Idea to having proper logging for JS applications. And have possibilities to turn it on/off.<br />
-Next major version will have option to load logs to `PIWIK` or `SPLUNK` server.
+Idea to having proper logging for JS applications. And have possibilities to turn it on/off or send the latest cache to server/email.<br />
+
 
 ### Features
+ * Creation/initialization <br />
+     ```
+      var lifeHelper = require('life-helper/lib/LogHelper');
+      
+      var LogHelper = lifeHelper({
+          siteID: 'MY_WEBSITE',
+          sessionID: 'ABCD-1234'
+      });
+     ```
  * Simple usage example
    * `LogHelper.log('MyApplication :: START');`
    * `LogHelper.log('MyClass.myMethod :: START', options);`
